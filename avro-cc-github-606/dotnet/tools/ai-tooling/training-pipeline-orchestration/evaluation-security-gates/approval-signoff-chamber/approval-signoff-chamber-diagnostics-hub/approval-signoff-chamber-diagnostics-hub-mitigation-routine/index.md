@@ -1,0 +1,23 @@
+---
+title: Approval Signoff Chamber Diagnostics Hub Mitigation Routine
+parent: "[[../index|Approval Signoff Chamber Diagnostics Hub]]"
+aliases:
+  - Dotnet-Approval-Signoff-Chamber-Diagnostics-Hub-Mitigation-Routine
+publish: true
+enableToc: true
+tags:
+  - dotnet
+  - tools
+  - ai
+  - training-pipelines
+  - training-mitigation
+---
+
+## Backlinks
+- [[../index|Approval Signoff Chamber Diagnostics Hub]]
+- [[../../../../../index|AI Tooling]]
+- [[../../../../../../index|Tools Stack]]
+
+## Children
+- [[./approval-signoff-chamber-diagnostics-hub-mitigation-routine-readiness-checklist/index|Approval Signoff Chamber Diagnostics Hub Mitigation Routine Readiness Checklist]]
+- [[./approval-signoff-chamber-diagnostics-hub-mitigation-routine-recovery-playbook/index|Approval Signoff Chamber Diagnostics Hub Mitigation Routine Recovery Playbook]]

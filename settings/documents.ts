@@ -47,11 +47,45 @@ export const Documents: Paths[] = [
             ],
           },
         ],
-      },
-    ],
-  },
+                title: "Avro.Cc (GitHub KB)",
+                href: "/avro-cc-github-606",
+                heading: "Knowledge Bases",
+                items: [
+                  {
+                    title: "Domains",
+                    href: "/domains",
+                  },
+                  {
+                    title: "AI Agents",
+                    href: "/ai-agents",
+                  },
+                  {
+                    title: "API Development",
+                    href: "/api",
+                  },
+                  {
+                    title: ".NET",
+                    href: "/dotnet",
+                  },
+                ],
+              },
+              {
+                title: "Markdown",
+                href: "/markdown",
+                heading: "Components",
   {
     spacer: true,
+  },
+  {
+    title: "Avro.Cc (GitHub KB)",
+    href: "/avro-cc-github-606",
+    heading: "Knowledge Bases",
+    items: [
+      {
+        title: "Domains",
+        href: "/domains",
+      },
+    ],
   },
   {
     title: "Markdown",

@@ -1,0 +1,22 @@
+---
+title: Strangler Grove Quality Sentinel Iteration Track
+parent: "[[../index|Strangler Grove Quality Sentinel]]"
+aliases:
+  - Dotnet-Strangler-Grove-Quality-Sentinel-Iteration-Track
+publish: true
+enableToc: true
+tags:
+  - dotnet
+  - architecture
+  - patterns
+  - patterns-iteration
+---
+
+## Backlinks
+- [[../index|Strangler Grove Quality Sentinel]]
+- [[../../../../index|Architecture Patterns]]
+- [[../../../../../index|Architecture Stack]]
+
+## Children
+- [[./strangler-grove-quality-sentinel-iteration-track-execution-capsule/index|Strangler Grove Quality Sentinel Iteration Track Execution Capsule]]
+- [[./strangler-grove-quality-sentinel-iteration-track-validation-checklist/index|Strangler Grove Quality Sentinel Iteration Track Validation Checklist]]
