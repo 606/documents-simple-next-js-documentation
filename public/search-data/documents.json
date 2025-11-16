@@ -1,5 +1,352 @@
 [
   {
+    "slug": "/avro-cc-github-606/ai-agents",
+    "title": "AI Agents",
+    "description": "Overview of AI agent frameworks and tools from the Avro.cc knowledge base.",
+    "content": "# AI Agent Frameworks & Tools\n\nThis page is imported from your Obsidian vault and summarises the main AI agent tools you track there.\n\n## Framework Index\n\n* [Autodev](/docs/avro-cc-github-606/ai-agents/autodev)\n* [AutoGPT](/docs/avro-cc-github-606/ai-agents/autogpt)\n* [BabyAGI](/docs/avro-cc-github-606/ai-agents/babyagi)\n* [GitHub Copilot](/docs/avro-cc-github-606/ai-agents/copilot)\n* [CrewAI](/docs/avro-cc-github-606/ai-agents/crewai)\n* [Cursor](/docs/avro-cc-github-606/ai-agents/cursor)\n* [LangChain](/docs/avro-cc-github-606/ai-agents/langchain)\n* [Local LLM Tools](/docs/avro-cc-github-606/ai-agents/localllm)\n* [Semantic Kernel](/docs/avro-cc-github-606/ai-agents/semantic-kernel)\n\nYou can later paste or expand detailed content from each corresponding Obsidian note into separate pages.\n",
+    "_searchMeta": {
+      "cleanContent": "ai agent frameworks tools this page is imported from your obsidian vault and summarises the main ai agent tools you track there framework index autodev autogpt babyagi github copilot crewai cursor langchain local llm tools semantic kernel you can later paste or expand detailed content from each corresponding obsidian note into separate pages",
+      "headings": [
+        "Framework Index"
+      ],
+      "keywords": [
+        "ai agents",
+        "autodev",
+        "autogpt",
+        "babyagi",
+        "copilot",
+        "crewai",
+        "cursor",
+        "langchain",
+        "local llm",
+        "semantic kernel",
+        "Framework Index"
+      ]
+    }
+  },
+  {
+    "slug": "/avro-cc-github-606/api/api-design",
+    "title": "API Design",
+    "description": "Principles, patterns, and practices for designing effective APIs.",
+    "content": "import { Note } from \"@/components/markdown/note\"\n\n# API Design\n\n## Overview\n\nAPI design encompasses the principles, patterns, and practices for creating effective, maintainable, and scalable APIs.\n\n## Design Principles\n\n### API-First Development\n\n* Design APIs before implementation\n* Use contracts and specifications to guide development\n* Focus on consumer needs and use cases\n\n### Consistency\n\n* Uniform naming conventions\n* Consistent error handling\n* Standardised HTTP status codes\n\n### Simplicity\n\n* Keep interfaces simple and intuitive\n* Avoid over-engineering\n* Reveal complexity progressively\n\n### Extensibility\n\n* Design for future changes\n* Plan versioning strategies\n* Aim for backward compatibility when possible\n\n## Resource Modeling\n\n### Identify Resources\n\n* Nouns representing domain entities\n* Clear relationships and hierarchies\n* Consider resource lifecycle\n\n### Resource Representations\n\n* JSON as the primary format\n* Consistent field naming (e.g. `camelCase`)\n* Include metadata such as timestamps and links\n\n### Hypermedia\n\n* Apply HATEOAS principles when appropriate\n* Provide self-describing responses\n* Include navigation links in resource representations\n\n## URL Design\n\n### RESTful URL Patterns\n\n```text\n/api/v1/users              # Collection\n/api/v1/users/{id}         # Individual resource\n/api/v1/users/{id}/posts   # Sub-resources\n/api/v1/posts?user=123     # Filtering\n/api/v1/posts?page=2       # Pagination\n```\n\n### Best Practices\n\n* Use lowercase letters\n* Use hyphens for multi-word resource names\n* Avoid using query parameters for primary resource identification\n* Keep URLs readable and predictable\n\n## HTTP Methods & Status Codes\n\n### Method Selection\n\n* **GET** for safe read operations\n* **POST** for creating resources\n* **PUT** for full resource updates\n* **PATCH** for partial updates\n* **DELETE** for resource removal\n\n### Status Code Guidelines\n\n* `200` for successful GET/PUT/PATCH\n* `201` for successful POST (resource created)\n* `204` for successful DELETE (no content)\n* `400` for client errors (bad request)\n* `401` for authentication required\n* `403` for authorization failures\n* `404` for resource not found\n* `422` for validation errors\n* `500` for server errors\n\n## OpenAPI Specification\n\n### Example\n\n```yaml\nopenapi: 3.0.3\ninfo:\n  title: User API\n  version: 1.0.0\npaths:\n  /users:\n    get:\n      summary: Get all users\n      responses:\n        '200':\n          description: Successful response\n```\n\n### Benefits\n\n* Machine-readable documentation\n* Code and client generation\n* Automated testing and contract validation\n\n## Versioning Strategies\n\n* URL versioning: `/v1/users`, `/v2/users`\n* Header versioning: `Accept: application/vnd.api.v1+json`\n* Query parameter versioning: `/users?version=1`\n* Media type versioning: `Content-Type: application/vnd.company.user.v2+json`\n\n## Error Handling\n\n### Standard Error Shape\n\n```json\n{\n  \"error\": {\n    \"code\": \"VALIDATION_ERROR\",\n    \"message\": \"Invalid user data\",\n    \"details\": [\n      {\n        \"field\": \"email\",\n        \"message\": \"Invalid email format\"\n      }\n    ]\n  }\n}\n```\n\n### Guidelines\n\n* Use consistent error codes\n* Provide clear, user-focused messages\n* Include enough context for debugging without leaking internals\n\n## Pagination, Filtering, and Sorting\n\n### Pagination\n\n* Offset-based pagination for simple use cases\n* Cursor-based pagination for large datasets or real-time feeds\n\n### Filtering & Sorting\n\n```text\n/users?status=active&sort=name&order=asc\n```\n\n* Support common operators: `eq`, `ne`, `gt`, `lt`, `in`\n\n## Rate Limiting\n\n### Example Headers\n\n```text\nX-RateLimit-Limit: 100\nX-RateLimit-Remaining: 95\nX-RateLimit-Reset: 1640995200\n```\n\n### Strategies\n\n* Fixed or sliding windows\n* Token bucket or leaky bucket algorithms\n\n## Deeper Topics\n\nThe Obsidian note links to dedicated pages for:\n\n* Resource modeling\n* URL design patterns\n\nYou can import those later into `resource-modeling` and `url-design` subpages as needed.\n",
+    "_searchMeta": {
+      "cleanContent": "import note from components markdown note api design overview api design encompasses the principles patterns and practices for creating effective maintainable and scalable apis design principles api-first development design apis before implementation use contracts and specifications to guide development focus on consumer needs and use cases consistency uniform naming conventions consistent error handling standardised http status codes simplicity keep interfaces simple and intuitive avoid over-engineering reveal complexity progressively extensibility design for future changes plan versioning strategies aim for backward compatibility when possible resource modeling identify resources nouns representing domain entities clear relationships and hierarchies consider resource lifecycle resource representations json as the primary format consistent field naming e g camelcase include metadata such as timestamps and links hypermedia apply hateoas principles when appropriate provide self-describing responses include navigation links in resource representations url design restful url patterns best practices use lowercase letters use hyphens for multi-word resource names avoid using query parameters for primary resource identification keep urls readable and predictable http methods status codes method selection get for safe read operations post for creating resources put for full resource updates patch for partial updates delete for resource removal status code guidelines 200 for successful get put patch 201 for successful post resource created 204 for successful delete no content 400 for client errors bad request 401 for authentication required 403 for authorization failures 404 for resource not found 422 for validation errors 500 for server errors openapi specification example benefits machine-readable documentation code and client generation automated testing and contract validation versioning strategies url versioning: v1 users v2 users header versioning: accept: application vnd api v1 json query parameter versioning: users version 1 media type versioning: content-type: application vnd company user v2 json error handling standard error shape guidelines use consistent error codes provide clear user-focused messages include enough context for debugging without leaking internals pagination filtering and sorting pagination offset-based pagination for simple use cases cursor-based pagination for large datasets or real-time feeds filtering sorting support common operators: eq ne gt lt in rate limiting example headers strategies fixed or sliding windows token bucket or leaky bucket algorithms deeper topics the obsidian note links to dedicated pages for: resource modeling url design patterns you can import those later into resource-modeling and url-design subpages as needed",
+      "headings": [
+        "Overview",
+        "Design Principles",
+        "Resource Modeling",
+        "URL Design",
+        "HTTP Methods & Status Codes",
+        "OpenAPI Specification",
+        "Versioning Strategies",
+        "Error Handling",
+        "Pagination, Filtering, and Sorting",
+        "Rate Limiting",
+        "Deeper Topics"
+      ],
+      "keywords": [
+        "api design",
+        "resource modeling",
+        "url design",
+        "openapi",
+        "error handling",
+        "pagination",
+        "Overview",
+        "Design Principles",
+        "Resource Modeling",
+        "URL Design",
+        "HTTP Methods & Status Codes",
+        "OpenAPI Specification",
+        "Versioning Strategies",
+        "Error Handling",
+        "Pagination, Filtering, and Sorting",
+        "Rate Limiting",
+        "Deeper Topics",
+        "GET",
+        "POST",
+        "PUT",
+        "PATCH",
+        "DELETE",
+        "camelCase",
+        "text\n/api/v1/users              # Collection\n/api/v1/users/{id}         # Individual resource\n/api/v1/users/{id}/posts   # Sub-resources\n/api/v1/posts?user=123     # Filtering\n/api/v1/posts?page=2       # Pagination",
+        "### Best Practices\n\n* Use lowercase letters\n* Use hyphens for multi-word resource names\n* Avoid using query parameters for primary resource identification\n* Keep URLs readable and predictable\n\n## HTTP Methods & Status Codes\n\n### Method Selection\n\n* **GET** for safe read operations\n* **POST** for creating resources\n* **PUT** for full resource updates\n* **PATCH** for partial updates\n* **DELETE** for resource removal\n\n### Status Code Guidelines\n\n*",
+        "for successful GET/PUT/PATCH\n*",
+        "for successful POST (resource created)\n*",
+        "for successful DELETE (no content)\n*",
+        "for client errors (bad request)\n*",
+        "for authentication required\n*",
+        "for authorization failures\n*",
+        "for resource not found\n*",
+        "for validation errors\n*",
+        "for server errors\n\n## OpenAPI Specification\n\n### Example",
+        "yaml\nopenapi: 3.0.3\ninfo:\n  title: User API\n  version: 1.0.0\npaths:\n  /users:\n    get:\n      summary: Get all users\n      responses:\n        '200':\n          description: Successful response",
+        "### Benefits\n\n* Machine-readable documentation\n* Code and client generation\n* Automated testing and contract validation\n\n## Versioning Strategies\n\n* URL versioning:",
+        ",",
+        "* Header versioning:",
+        "* Query parameter versioning:",
+        "* Media type versioning:",
+        "## Error Handling\n\n### Standard Error Shape",
+        "json\n{\n  \"error\": {\n    \"code\": \"VALIDATION_ERROR\",\n    \"message\": \"Invalid user data\",\n    \"details\": [\n      {\n        \"field\": \"email\",\n        \"message\": \"Invalid email format\"\n      }\n    ]\n  }\n}",
+        "### Guidelines\n\n* Use consistent error codes\n* Provide clear, user-focused messages\n* Include enough context for debugging without leaking internals\n\n## Pagination, Filtering, and Sorting\n\n### Pagination\n\n* Offset-based pagination for simple use cases\n* Cursor-based pagination for large datasets or real-time feeds\n\n### Filtering & Sorting",
+        "text\n/users?status=active&sort=name&order=asc",
+        "* Support common operators:",
+        "## Rate Limiting\n\n### Example Headers",
+        "text\nX-RateLimit-Limit: 100\nX-RateLimit-Remaining: 95\nX-RateLimit-Reset: 1640995200",
+        "### Strategies\n\n* Fixed or sliding windows\n* Token bucket or leaky bucket algorithms\n\n## Deeper Topics\n\nThe Obsidian note links to dedicated pages for:\n\n* Resource modeling\n* URL design patterns\n\nYou can import those later into",
+        "and"
+      ]
+    }
+  },
+  {
+    "slug": "/avro-cc-github-606/api/graphql",
+    "title": "GraphQL",
+    "description": "Overview, schema, queries, mutations, subscriptions, and best practices for GraphQL APIs.",
+    "content": "import { Note } from \"@/components/markdown/note\"\n\n# GraphQL\n\n## Overview\n\nGraphQL is a query language for APIs that allows clients to request exactly the data they need, making APIs more efficient and flexible.\n\n## Core Concepts\n\n### Schema\n\n* Defines available data and operations\n* Strongly typed with SDL (Schema Definition Language)\n* Self-documenting API\n\n### Queries\n\n* Read operations to fetch data\n* Declarative data fetching\n* Nested and related data in a single request\n\n### Mutations\n\n* Write operations to modify data\n* Similar to queries but for changes\n* Return modified data\n\n### Subscriptions\n\n* Real-time data updates\n* WebSocket-based communication\n* Push-based data flow\n\n## Schema Definition\n\n### Types\n\n```graphql\ntype User {\n  id: ID!\n  name: String!\n  email: String!\n  posts: [Post!]!\n}\n\ntype Post {\n  id: ID!\n  title: String!\n  content: String!\n  author: User!\n  publishedAt: DateTime!\n}\n```\n\n### Queries\n\n```graphql\ntype Query {\n  users: [User!]!\n  user(id: ID!): User\n  posts(limit: Int): [Post!]!\n}\n```\n\n### Mutations\n\n```graphql\ntype Mutation {\n  createUser(input: CreateUserInput!): User!\n  updateUser(id: ID!, input: UpdateUserInput!): User!\n  deleteUser(id: ID!): Boolean!\n}\n```\n\n## Query Examples\n\n### Basic Query\n\n```graphql\nquery {\n  user(id: \"123\") {\n    name\n    email\n  }\n}\n```\n\n### Nested Query\n\n```graphql\nquery {\n  user(id: \"123\") {\n    name\n    posts {\n      title\n      publishedAt\n    }\n  }\n}\n```\n\n### Query with Arguments\n\n```graphql\nquery {\n  posts(limit: 10) {\n    title\n    author {\n      name\n    }\n  }\n}\n```\n\n### Mutation\n\n```graphql\nmutation {\n  createUser(input: {\n    name: \"John Doe\"\n    email: \"john@example.com\"\n  }) {\n    id\n    name\n    email\n  }\n}\n```\n\n## Advantages over REST\n\n### Precise Data Fetching\n\n* No over-fetching: get exactly what's needed\n* No under-fetching: single request for related data\n* Reduced network overhead\n\n### Single Endpoint\n\n* All operations through `/graphql`\n* Versioning through schema evolution\n* Simplified client-server communication\n\n### Strong Typing\n\n* Compile-time query validation\n* Better IDE support and tooling\n* Self-documenting APIs\n\n### Real-time Capabilities\n\n* Built-in subscriptions for live data\n* WebSocket transport for real-time updates\n\n## Implementation\n\n### Popular Libraries\n\n* **Apollo Server** (Node.js)\n* **GraphQL Yoga** (Node.js)\n* **Strawberry** (Python)\n* **Graphene** (Python)\n* **Hot Chocolate** (.NET)\n\n### Schema Stitching & Federation\n\n* Combine multiple GraphQL schemas\n* Federation for microservices\n* Schema composition across services\n\n## Best Practices\n\n### Schema Design\n\n* Use descriptive field names\n* Implement proper pagination\n* Handle errors consistently\n* Evolve schema without breaking clients\n\n### Security\n\n* Enforce query complexity limits\n* Depth limiting and whitelisting\n* Authentication and authorization\n* Rate limiting and throttling\n\n### Performance\n\n* Use DataLoader-style batching\n* Caching at query and field level\n* Query optimization and profiling\n* Monitoring and metrics\n\n## Deeper Topics\n\nThe original note links to specialised GraphQL topics you can migrate separately:\n\n* Schema design\n* Resolvers\n* Federation\n* Subscriptions\n\nFor now, this page gives you a comprehensive GraphQL overview integrated into your Next.js docs.\n",
+    "_searchMeta": {
+      "cleanContent": "import note from components markdown note graphql overview graphql is a query language for apis that allows clients to request exactly the data they need making apis more efficient and flexible core concepts schema defines available data and operations strongly typed with sdl schema definition language self-documenting api queries read operations to fetch data declarative data fetching nested and related data in a single request mutations write operations to modify data similar to queries but for changes return modified data subscriptions real-time data updates websocket-based communication push-based data flow schema definition types queries mutations query examples basic query nested query query with arguments mutation advantages over rest precise data fetching no over-fetching: get exactly what s needed no under-fetching: single request for related data reduced network overhead single endpoint all operations through graphql versioning through schema evolution simplified client-server communication strong typing compile-time query validation better ide support and tooling self-documenting apis real-time capabilities built-in subscriptions for live data websocket transport for real-time updates implementation popular libraries apollo server node js graphql yoga node js strawberry python graphene python hot chocolate net schema stitching federation combine multiple graphql schemas federation for microservices schema composition across services best practices schema design use descriptive field names implement proper pagination handle errors consistently evolve schema without breaking clients security enforce query complexity limits depth limiting and whitelisting authentication and authorization rate limiting and throttling performance use dataloader-style batching caching at query and field level query optimization and profiling monitoring and metrics deeper topics the original note links to specialised graphql topics you can migrate separately: schema design resolvers federation subscriptions for now this page gives you a comprehensive graphql overview integrated into your next js docs",
+      "headings": [
+        "Overview",
+        "Core Concepts",
+        "Schema Definition",
+        "Query Examples",
+        "Advantages over REST",
+        "Implementation",
+        "Best Practices",
+        "Deeper Topics"
+      ],
+      "keywords": [
+        "graphql",
+        "schema",
+        "queries",
+        "mutations",
+        "subscriptions",
+        "federation",
+        "Overview",
+        "Core Concepts",
+        "Schema Definition",
+        "Query Examples",
+        "Advantages over REST",
+        "Implementation",
+        "Best Practices",
+        "Deeper Topics",
+        "Apollo Server",
+        "GraphQL Yoga",
+        "Strawberry",
+        "Graphene",
+        "Hot Chocolate",
+        "graphql\ntype User {\n  id: ID!\n  name: String!\n  email: String!\n  posts: [Post!]!\n}\n\ntype Post {\n  id: ID!\n  title: String!\n  content: String!\n  author: User!\n  publishedAt: DateTime!\n}",
+        "### Queries",
+        "graphql\ntype Query {\n  users: [User!]!\n  user(id: ID!): User\n  posts(limit: Int): [Post!]!\n}",
+        "### Mutations",
+        "graphql\ntype Mutation {\n  createUser(input: CreateUserInput!): User!\n  updateUser(id: ID!, input: UpdateUserInput!): User!\n  deleteUser(id: ID!): Boolean!\n}",
+        "## Query Examples\n\n### Basic Query",
+        "graphql\nquery {\n  user(id: \"123\") {\n    name\n    email\n  }\n}",
+        "### Nested Query",
+        "graphql\nquery {\n  user(id: \"123\") {\n    name\n    posts {\n      title\n      publishedAt\n    }\n  }\n}",
+        "### Query with Arguments",
+        "graphql\nquery {\n  posts(limit: 10) {\n    title\n    author {\n      name\n    }\n  }\n}",
+        "### Mutation",
+        "graphql\nmutation {\n  createUser(input: {\n    name: \"John Doe\"\n    email: \"john@example.com\"\n  }) {\n    id\n    name\n    email\n  }\n}",
+        "## Advantages over REST\n\n### Precise Data Fetching\n\n* No over-fetching: get exactly what's needed\n* No under-fetching: single request for related data\n* Reduced network overhead\n\n### Single Endpoint\n\n* All operations through"
+      ]
+    }
+  },
+  {
+    "slug": "/avro-cc-github-606/api",
+    "title": "API Development",
+    "description": "High-level categories and concepts for API development from the Avro.cc knowledge base.",
+    "content": "# API Development Categories\n\nThe following categories mirror your Obsidian API index. Each bullet points to a sub-area you can fill in with detailed MDX content.\n\n## Main Categories\n\n* [REST APIs](/docs/avro-cc-github-606/api/rest-apis)\n* [GraphQL](/docs/avro-cc-github-606/api/graphql)\n* [API Design](/docs/avro-cc-github-606/api/api-design)\n* [API Security](/docs/avro-cc-github-606/api/api-security)\n* [API Testing](/docs/avro-cc-github-606/api/api-testing)\n* [API Documentation](/docs/avro-cc-github-606/api/api-documentation)\n* [API Management](/docs/avro-cc-github-606/api/api-management)\n* [Microservices APIs](/docs/avro-cc-github-606/api/microservices)\n* [API Frameworks & Tools](/docs/avro-cc-github-606/api/api-frameworks)\n\n## Key API Concepts\n\n* **HTTP Methods**: GET, POST, PUT, DELETE, PATCH\n* **Status Codes**: 200, 201, 400, 401, 403, 404, 500\n* **Content Types**: JSON, XML, form data\n* **Authentication**: Basic, bearer tokens, API keys\n* **Versioning**: URL, header, query parameter strategies\n* **Caching**: HTTP caching, CDN, Redis\n* **Rate Limiting**: Token bucket, sliding window algorithms\n\n## Related Areas\n\n* [.NET APIs](/docs/avro-cc-github-606/dotnet)\n* [Python APIs](/docs/avro-cc-github-606/programming-langs/python)\n* [API Testing Strategies](/docs/avro-cc-github-606/testing)\n* [API Deployment & DevOps](/docs/avro-cc-github-606/devops)\n",
+    "_searchMeta": {
+      "cleanContent": "api development categories the following categories mirror your obsidian api index each bullet points to a sub-area you can fill in with detailed mdx content main categories rest apis graphql api design api security api testing api documentation api management microservices apis api frameworks tools key api concepts http methods: get post put delete patch status codes: 200 201 400 401 403 404 500 content types: json xml form data authentication: basic bearer tokens api keys versioning: url header query parameter strategies caching: http caching cdn redis rate limiting: token bucket sliding window algorithms related areas net apis python apis api testing strategies api deployment devops",
+      "headings": [
+        "Main Categories",
+        "Key API Concepts",
+        "Related Areas"
+      ],
+      "keywords": [
+        "api",
+        "rest",
+        "graphql",
+        "api design",
+        "api security",
+        "api testing",
+        "api documentation",
+        "api management",
+        "microservices",
+        "api frameworks",
+        "Main Categories",
+        "Key API Concepts",
+        "Related Areas",
+        "HTTP Methods",
+        "Status Codes",
+        "Content Types",
+        "Authentication",
+        "Versioning",
+        "Caching",
+        "Rate Limiting"
+      ]
+    }
+  },
+  {
+    "slug": "/avro-cc-github-606/api/rest-apis",
+    "title": "REST APIs",
+    "description": "Core principles, HTTP methods, status codes, and best practices for REST API design.",
+    "content": "import { Note } from \"@/components/markdown/note\"\n\n# REST APIs\n\n## Overview\n\nREST (Representational State Transfer) APIs are the most common type of web APIs, following HTTP principles and using standard HTTP methods.\n\n## Core Principles\n\n### Stateless\n\nEach request contains all information needed to process it. No server-side session state.\n\n### Client-Server Architecture\n\nClear separation between client and server concerns.\n\n### Cacheable\n\nResponses must define themselves as cacheable or not.\n\n### Uniform Interface\n\nConsistent resource identification and manipulation through representations.\n\n### Layered System\n\nClients cannot tell if they are connected directly to the server or through intermediaries.\n\n## HTTP Methods\n\n### GET\n\n* **Purpose**: Retrieve resource(s)\n* **Safe**: Yes (doesn't modify data)\n* **Idempotent**: Yes\n* **Body**: No\n* **Example**: `GET /users/123`\n\n### POST\n\n* **Purpose**: Create a new resource\n* **Safe**: No\n* **Idempotent**: No\n* **Body**: Yes\n* **Example**: `POST /users`\n\n### PUT\n\n* **Purpose**: Update/replace an entire resource\n* **Safe**: No\n* **Idempotent**: Yes\n* **Body**: Yes\n* **Example**: `PUT /users/123`\n\n### PATCH\n\n* **Purpose**: Partial resource update\n* **Safe**: No\n* **Idempotent**: No (usually)\n* **Body**: Yes\n* **Example**: `PATCH /users/123`\n\n### DELETE\n\n* **Purpose**: Remove a resource\n* **Safe**: No\n* **Idempotent**: Yes\n* **Body**: No\n* **Example**: `DELETE /users/123`\n\n## HTTP Status Codes\n\n### 2xx Success\n\n* **200 OK**: Request succeeded\n* **201 Created**: Resource created\n* **204 No Content**: Success, no response body\n\n### 3xx Redirection\n\n* **301 Moved Permanently**: Resource moved permanently\n* **302 Found**: Resource moved temporarily\n* **304 Not Modified**: Resource not modified (caching)\n\n### 4xx Client Error\n\n* **400 Bad Request**: Invalid request syntax\n* **401 Unauthorized**: Authentication required\n* **403 Forbidden**: Access denied\n* **404 Not Found**: Resource not found\n* **422 Unprocessable Entity**: Validation errors\n\n### 5xx Server Error\n\n* **500 Internal Server Error**: Unexpected error\n* **502 Bad Gateway**: Invalid response from upstream\n* **503 Service Unavailable**: Server temporarily unavailable\n\n## Resource Design\n\n### Naming Conventions\n\n* Use nouns, not verbs: `/users` not `/getUsers`\n* Use plural nouns: `/users` not `/user`\n* Use lowercase with hyphens: `/user-profiles`\n\n### Nested Resources\n\n* `/users/123/posts` – User's posts\n* `/users/123/posts/456` – Specific post\n* Avoid deep nesting (max 3 levels)\n\n### Query Parameters\n\n* Filtering: `GET /users?status=active`\n* Sorting: `GET /users?sort=name`\n* Pagination: `GET /users?page=2&limit=10`\n\n## Best Practices\n\n### Versioning\n\n* URL versioning: `/v1/users`\n* Header versioning: `Accept: application/vnd.api.v1+json`\n* Query parameter: `/users?version=1`\n\n### Content Negotiation\n\n* `Accept` header for response format\n* `Content-Type` header for request format\n* Support JSON, XML, etc.\n\n### Error Handling\n\n* Consistent error response format\n* Include error codes and messages\n* Provide helpful debugging information\n\n### Security\n\n* Use HTTPS\n* Implement authentication\n* Validate input data\n* Apply rate limiting\n\n## Deeper Topics\n\nThe original note links to more specialised pages you can migrate later:\n\n* HTTP methods deep dive\n* HTTP status codes reference\n* Content negotiation\n* Hypermedia APIs (HATEOAS)\n\nFor now, this page gives you a solid, self-contained REST overview in the Next.js docs.\n",
+    "_searchMeta": {
+      "cleanContent": "import note from components markdown note rest apis overview rest representational state transfer apis are the most common type of web apis following http principles and using standard http methods core principles stateless each request contains all information needed to process it no server-side session state client-server architecture clear separation between client and server concerns cacheable responses must define themselves as cacheable or not uniform interface consistent resource identification and manipulation through representations layered system clients cannot tell if they are connected directly to the server or through intermediaries http methods get purpose: retrieve resource s safe: yes doesn t modify data idempotent: yes body: no example: get users 123 post purpose: create a new resource safe: no idempotent: no body: yes example: post users put purpose: update replace an entire resource safe: no idempotent: yes body: yes example: put users 123 patch purpose: partial resource update safe: no idempotent: no usually body: yes example: patch users 123 delete purpose: remove a resource safe: no idempotent: yes body: no example: delete users 123 http status codes 2xx success 200 ok: request succeeded 201 created: resource created 204 no content: success no response body 3xx redirection 301 moved permanently: resource moved permanently 302 found: resource moved temporarily 304 not modified: resource not modified caching 4xx client error 400 bad request: invalid request syntax 401 unauthorized: authentication required 403 forbidden: access denied 404 not found: resource not found 422 unprocessable entity: validation errors 5xx server error 500 internal server error: unexpected error 502 bad gateway: invalid response from upstream 503 service unavailable: server temporarily unavailable resource design naming conventions use nouns not verbs: users not getusers use plural nouns: users not user use lowercase with hyphens: user-profiles nested resources users 123 posts user s posts users 123 posts 456 specific post avoid deep nesting max 3 levels query parameters filtering: get users status active sorting: get users sort name pagination: get users page 2 limit 10 best practices versioning url versioning: v1 users header versioning: accept: application vnd api v1 json query parameter: users version 1 content negotiation accept header for response format content-type header for request format support json xml etc error handling consistent error response format include error codes and messages provide helpful debugging information security use https implement authentication validate input data apply rate limiting deeper topics the original note links to more specialised pages you can migrate later: http methods deep dive http status codes reference content negotiation hypermedia apis hateoas for now this page gives you a solid self-contained rest overview in the next js docs",
+      "headings": [
+        "Overview",
+        "Core Principles",
+        "HTTP Methods",
+        "HTTP Status Codes",
+        "Resource Design",
+        "Best Practices",
+        "Deeper Topics"
+      ],
+      "keywords": [
+        "rest",
+        "http",
+        "status codes",
+        "resource design",
+        "versioning",
+        "content negotiation",
+        "Overview",
+        "Core Principles",
+        "HTTP Methods",
+        "HTTP Status Codes",
+        "Resource Design",
+        "Best Practices",
+        "Deeper Topics",
+        "Purpose",
+        "Safe",
+        "Idempotent",
+        "Body",
+        "Example",
+        "200 OK",
+        "201 Created",
+        "204 No Content",
+        "301 Moved Permanently",
+        "302 Found",
+        "304 Not Modified",
+        "400 Bad Request",
+        "401 Unauthorized",
+        "403 Forbidden",
+        "404 Not Found",
+        "422 Unprocessable Entity",
+        "500 Internal Server Error",
+        "502 Bad Gateway",
+        "503 Service Unavailable",
+        "GET /users/123",
+        "POST /users",
+        "PUT /users/123",
+        "PATCH /users/123",
+        "DELETE /users/123",
+        "/users",
+        "/getUsers",
+        "/user",
+        "/user-profiles",
+        "/users/123/posts",
+        "/users/123/posts/456",
+        "GET /users?status=active",
+        "GET /users?sort=name",
+        "GET /users?page=2&limit=10",
+        "/v1/users",
+        "Accept: application/vnd.api.v1+json",
+        "/users?version=1",
+        "Accept",
+        "Content-Type"
+      ]
+    }
+  },
+  {
+    "slug": "/avro-cc-github-606/devops",
+    "title": "DevOps",
+    "description": "High-level DevOps MOC from the Avro.cc GitHub vault.",
+    "content": "import { Note } from \"@/components/markdown/note\"\n\n# DevOps\n\nDevOps index MOC:\n\n* [GitHub](/docs/avro-cc-github-606/devops/github)\n* [GitLab](/docs/avro-cc-github-606/devops/gitlab)\n\nYou can later create `github` and `gitlab` subpages and paste the corresponding notes from the vault.\n",
+    "_searchMeta": {
+      "cleanContent": "import note from components markdown note devops devops index moc: github gitlab you can later create github and gitlab subpages and paste the corresponding notes from the vault",
+      "headings": [],
+      "keywords": [
+        "devops",
+        "github",
+        "gitlab",
+        "moc"
+      ]
+    }
+  },
+  {
+    "slug": "/avro-cc-github-606/domains",
+    "title": "Avro.Cc Domains",
+    "description": "Entry points into the Avro.cc GitHub documentation domains.",
+    "content": "# Avro.Cc Domains\n\nThe original Obsidian index lists these main areas:\n\n* [Computer Science](/docs/avro-cc-github-606/computer-science)\n* [Databases](/docs/avro-cc-github-606/databases)\n* [DevOps](/docs/avro-cc-github-606/devops)\n* [Docker](/docs/avro-cc-github-606/docker)\n* [.NET](/docs/avro-cc-github-606/dotnet)\n* [Frameworks](/docs/avro-cc-github-606/frameworks)\n* [Obsidian](/docs/avro-cc-github-606/obsidian)\n* [Pet Projects](/docs/avro-cc-github-606/pet-projects)\n* [Programming Languages](/docs/avro-cc-github-606/programming-langs)\n* [Software Architecture](/docs/avro-cc-github-606/software-architecture)\n* [Software Design](/docs/avro-cc-github-606/software-design)\n* [Testing](/docs/avro-cc-github-606/testing)\n* [AI Agents](/docs/avro-cc-github-606/ai-agents)\n* [API](/docs/avro-cc-github-606/api)\n* [AWS](/docs/avro-cc-github-606/aws)\n\nYou can gradually wire each of these to imported MDX content as you migrate notes.\n",
+    "_searchMeta": {
+      "cleanContent": "avro cc domains the original obsidian index lists these main areas: computer science databases devops docker net frameworks obsidian pet projects programming languages software architecture software design testing ai agents api aws you can gradually wire each of these to imported mdx content as you migrate notes",
+      "headings": [],
+      "keywords": [
+        "avro",
+        "domains",
+        "overview"
+      ]
+    }
+  },
+  {
+    "slug": "/avro-cc-github-606/dotnet",
+    "title": ".NET Overview",
+    "description": "High-level stacks and topic areas for .NET from the Avro.cc knowledge base.",
+    "content": "# .NET Knowledge Map\n\nThis page mirrors your Obsidian `.Net` index and acts as the entry point to .NET-related documentation in this Next.js site.\n\n## Stacks\n\n* [.NET MOC](/docs/avro-cc-github-606/dotnet/dotnet-moc)\n* [Get Started Stack](/docs/avro-cc-github-606/dotnet/get-started)\n* [Fundamentals Stack](/docs/avro-cc-github-606/dotnet/fundamentals)\n* [Data Access Stack](/docs/avro-cc-github-606/dotnet/data-access)\n* [Architecture Stack](/docs/avro-cc-github-606/dotnet/architecture)\n* [Runtime Stack](/docs/avro-cc-github-606/dotnet/runtime)\n* [Security Stack](/docs/avro-cc-github-606/dotnet/security)\n* [Performance Stack](/docs/avro-cc-github-606/dotnet/performance)\n* [Deployment Stack](/docs/avro-cc-github-606/dotnet/deployment)\n* [Language Stack](/docs/avro-cc-github-606/dotnet/language)\n* [Tools Stack](/docs/avro-cc-github-606/dotnet/tools)\n* [Platforms Stack](/docs/avro-cc-github-606/dotnet/platforms)\n* [Desktop Stack](/docs/avro-cc-github-606/dotnet/desktop)\n* [Mobile Stack](/docs/avro-cc-github-606/dotnet/mobile)\n* [Web Stack](/docs/avro-cc-github-606/dotnet/web)\n* [Testing Stack](/docs/avro-cc-github-606/dotnet/testing)\n* [Monitoring Stack](/docs/avro-cc-github-606/dotnet/monitoring)\n* [Distributed Stack](/docs/avro-cc-github-606/dotnet/distributed)\n* [Machine Learning Stack](/docs/avro-cc-github-606/dotnet/machine-learning)\n* [Azure Stack](/docs/avro-cc-github-606/dotnet/azure)\n\nYou can progressively move detailed content from each Obsidian stack note into a corresponding MDX page under these URLs.\n",
+    "_searchMeta": {
+      "cleanContent": "net knowledge map this page mirrors your obsidian net index and acts as the entry point to net-related documentation in this next js site stacks net moc get started stack fundamentals stack data access stack architecture stack runtime stack security stack performance stack deployment stack language stack tools stack platforms stack desktop stack mobile stack web stack testing stack monitoring stack distributed stack machine learning stack azure stack you can progressively move detailed content from each obsidian stack note into a corresponding mdx page under these urls",
+      "headings": [
+        "Stacks"
+      ],
+      "keywords": [
+        "dotnet",
+        "csharp",
+        "architecture",
+        "runtime",
+        "security",
+        "performance",
+        "deployment",
+        "tools",
+        "azure",
+        "Stacks",
+        ".Net"
+      ]
+    }
+  },
+  {
+    "slug": "/avro-cc-github-606",
+    "title": "Avro.Cc GitHub Knowledge Base",
+    "description": "Imported documentation from the Avro.cc GitHub Obsidian vault.",
+    "content": "# Avro.Cc GitHub Knowledge Base\n\nThis section mirrors content from your Avro.cc Obsidian vault (`avro-cc-github-606`).\n\nStart from the high‑level index:\n\n* [Domains](/docs/avro-cc-github-606/domains)\n\nYou can expand this page later with richer introductions or links.\n",
+    "_searchMeta": {
+      "cleanContent": "avro cc github knowledge base this section mirrors content from your avro cc obsidian vault avro-cc-github-606 start from the high level index: domains you can expand this page later with richer introductions or links",
+      "headings": [],
+      "keywords": [
+        "avro",
+        "knowledge base",
+        "github",
+        "docs",
+        "avro-cc-github-606"
+      ]
+    }
+  },
+  {
+    "slug": "/avro-cc-github-606/testing",
+    "title": "Testing",
+    "description": "Top-level MOC for testing from the Avro.cc knowledge base.",
+    "content": "import { Note } from \"@/components/markdown/note\"\n\n# Testing\n\n* [Testing MOC](/docs/avro-cc-github-606/testing/testing-moc)\n\nAs you migrate more notes, you can add links to specific testing topics (unit, integration, e2e, performance, etc.).\n",
+    "_searchMeta": {
+      "cleanContent": "import note from components markdown note testing testing moc as you migrate more notes you can add links to specific testing topics unit integration e2e performance etc",
+      "headings": [],
+      "keywords": [
+        "testing",
+        "moc",
+        "quality"
+      ]
+    }
+  },
+  {
     "slug": "/basic-setup/changelog",
     "title": "Changelog",
     "description": "Changelogs and improvements to the Documents projects.",
@@ -442,9 +789,9 @@
     "slug": "/structure/deep",
     "title": "Introduction",
     "description": "This section provides an overview of Introduction.",
-    "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam iste dolorum tempore consectetur explicabo tempora provident quia maxime, molestiae, facilis aperiam et, error illum vel ullam? Quis architecto dolore ullam\n\n* \\[x] Write the press release\n* \\[ ] Update the website\n* \\[ ] Contact the media\n\n| Syntax        | Description |   Test Text |\r\n| :------------ | :---------: | ----------: |\r\n| Header        |    Title    | Here's this |\r\n| Paragraph     |    Text     |    And more |\r\n| Strikethrough |             |    ~~Text~~ |\n\n## Getting Started\n\nTo begin using the Documentation Template, follow these simple steps:\n\n* Start by cloning the repository to your local machine.\n\nLorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit quae iure nulla deserunt dolore quam pariatur minus sapiente accusantium. Optio, necessitatibus sequi. Veritatis, aspernatur? Possimus quis repellat eum vitae eveniet.\n\n## Blockquotes\n\nBlockquotes are useful for emphasizing key points or quoting external sources:\n\n> \"Documentation is a love letter that you write to your future self.\" - Damian Conway\n\nFeel free to use blockquotes to highlight important information or quotes relevant to your documentation.\n\n## Code Examples with switch\n\nHere a custom tab component from shadcn ui is used.\n\n## Conclusion\n\nThank you for choosing the Documentation Template for your project. Whether you're documenting software, APIs, or processes, we're here to support you in creating clear and effective documentation. Happy documenting!\n\n## Tabs Example\n",
+    "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam iste dolorum tempore consectetur explicabo tempora provident quia maxime, molestiae, facilis aperiam et, error illum vel ullam? Quis architecto dolore ullam\n\n* \\[x] Write the press release\n* \\[ ] Update the website\n* \\[ ] Contact the media\n\n| Syntax        | Description |   Test Text |\n| :------------ | :---------: | ----------: |\n| Header        |    Title    | Here's this |\n| Paragraph     |    Text     |    And more |\n| Strikethrough |             |    ~~Text~~ |\n\n## Getting Started\n\nTo begin using the Documentation Template, follow these simple steps:\n\n* Start by cloning the repository to your local machine.\n\nLorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit quae iure nulla deserunt dolore quam pariatur minus sapiente accusantium. Optio, necessitatibus sequi. Veritatis, aspernatur? Possimus quis repellat eum vitae eveniet.\n\n## Blockquotes\n\nBlockquotes are useful for emphasizing key points or quoting external sources:\n\n> \"Documentation is a love letter that you write to your future self.\" - Damian Conway\n\nFeel free to use blockquotes to highlight important information or quotes relevant to your documentation.\n\n## Code Examples with switch\n\nHere a custom tab component from shadcn ui is used.\n\n## Conclusion\n\nThank you for choosing the Documentation Template for your project. Whether you're documenting software, APIs, or processes, we're here to support you in creating clear and effective documentation. Happy documenting!\n\n## Tabs Example\n",
     "_searchMeta": {
-      "cleanContent": "lorem ipsum dolor sit amet consectetur adipisicing elit numquam iste dolorum tempore consectetur explicabo tempora provident quia maxime molestiae facilis aperiam et error illum vel ullam quis architecto dolore ullam x write the press release update the website contact the media syntax description test text :------------ :---------: ----------: header title here s this paragraph text and more strikethrough text getting started to begin using the documentation template follow these simple steps: start by cloning the repository to your local machine lorem ipsum dolor sit amet consectetur adipisicing elit reprehenderit quae iure nulla deserunt dolore quam pariatur minus sapiente accusantium optio necessitatibus sequi veritatis aspernatur possimus quis repellat eum vitae eveniet blockquotes blockquotes are useful for emphasizing key points or quoting external sources: documentation is a love letter that you write to your future self - damian conway feel free to use blockquotes to highlight important information or quotes relevant to your documentation code examples with switch here a custom tab component from shadcn ui is used conclusion thank you for choosing the documentation template for your project whether you re documenting software apis or processes we re here to support you in creating clear and effective documentation happy documenting tabs example",
+      "cleanContent": "lorem ipsum dolor sit amet consectetur adipisicing elit numquam iste dolorum tempore consectetur explicabo tempora provident quia maxime molestiae facilis aperiam et error illum vel ullam quis architecto dolore ullam x write the press release update the website contact the media syntax description test text:------------ :---------: ----------:header title here s thisparagraph text and morestrikethrough text getting started to begin using the documentation template follow these simple steps: start by cloning the repository to your local machine lorem ipsum dolor sit amet consectetur adipisicing elit reprehenderit quae iure nulla deserunt dolore quam pariatur minus sapiente accusantium optio necessitatibus sequi veritatis aspernatur possimus quis repellat eum vitae eveniet blockquotes blockquotes are useful for emphasizing key points or quoting external sources: documentation is a love letter that you write to your future self - damian conway feel free to use blockquotes to highlight important information or quotes relevant to your documentation code examples with switch here a custom tab component from shadcn ui is used conclusion thank you for choosing the documentation template for your project whether you re documenting software apis or processes we re here to support you in creating clear and effective documentation happy documenting tabs example",
       "headings": [
         "Getting Started",
         "Blockquotes",
