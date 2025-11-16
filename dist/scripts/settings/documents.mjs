@@ -22,34 +22,27 @@ export const Documents = [
         spacer: true,
     },
     {
-        title: "Navigation",
-        href: "/navigation",
-        heading: "Documents",
-    },
-    {
-        title: "Structure",
-        href: "/structure",
+        title: "Avro.Cc (GitHub KB)",
+        href: "/avro-cc-github-606",
+        heading: "Knowledge Bases",
         items: [
             {
-                title: "Deep",
-                href: "/deep",
-                items: [
-                    {
-                        title: "Deeper",
-                        href: "/deeper",
-                        items: [
-                            {
-                                title: "Even deeper",
-                                href: "/even-deeper",
-                            },
-                        ],
-                    },
-                ],
+                title: "Domains",
+                href: "/domains",
+            },
+            {
+                title: "AI Agents",
+                href: "/ai-agents",
+            },
+            {
+                title: "API Development",
+                href: "/api",
+            },
+            {
+                title: ".NET",
+                href: "/dotnet",
             },
         ],
-    },
-    {
-        spacer: true,
     },
     {
         title: "Markdown",
